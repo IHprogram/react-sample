@@ -47,6 +47,12 @@ function App() {
     }
   }
 
+  let moji = '文字だよ';
+
+  const myClick = (hikisu) => {
+    alert(`${hikisu}です`);
+  };
+
   return (
     <div className="App">
       <div>{num1}</div>
@@ -72,6 +78,9 @@ function App() {
 
         {/* 関数 */}
         <Hoge />
+
+        <button onClick={() => { console.log('ボタン1号です') }}>ボタン1号</button>
+        <button onDoubleClick={() => myClick(moji)}>ボタン2号</button>
       </div>
     </div>
   );
