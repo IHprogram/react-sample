@@ -1,25 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
 
+// ↓JSXを使う場合
 function App() {
+  const hoge = <strong>"こんちは！"</strong>;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 class="red">{hoge}</h1>
     </div>
   );
 }
+
+
+// JSXを使わない場合
+// import React from "react";
+// function App() {
+//   const hoge = "こんちは！";
+
+//   return (
+//     React.createElement("div", null, "hello")
+//   );
+// }
 
 export default App;
