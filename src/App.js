@@ -7,6 +7,7 @@ const Members = [
   { name: "taro", age: 12 },
   { name: "jiro", age: 13 },
   { name: "saburo", age: 14 },
+  { name: "shiro" },
 ];
 
 const Func3 = () => {
@@ -28,15 +29,36 @@ const Func1 = () => {
   return <div><h1>func1です</h1><Func2 /></div>
 }
 
+// 画面に表示するためのmapメソッド
+const Func4 = () => {
+  return Members.map((member, index) => {
+    // keyはindexを指定
+    return <Func5 name={member.name} age={member.age} key={index} />
+  })
+}
+
+//メンバー一つ一つの表示が子コンポーネントになる。
+const Func5 = (props) => {
+  return <li>名前:{props.name} 年齢:{props.age}</li>
+}
+
+Func5.defaultProps = {
+  age: 100
+}
+
 const App = () => {
   return (
     <React.Fragment>
       {
         Members.map((men, index) => {
-          return <div key={index}><p>{men.name}</p><p>{men.age}</p></div>
+          return <div key={index} className="red"><p>{men.name}</p><p>{men.age}</p></div>
         })
       }
       <Func1 />
+
+      <ul>
+        <Func4 />
+      </ul>
     </React.Fragment>
   )
 }
