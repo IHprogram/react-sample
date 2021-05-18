@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import PropTypes from 'prop-types'
 
 import React, { Component } from "react"; //ReactがComponentとしても認識される。 「reactオブジェクト」全体を持ってきているし、Componentオブジェクト単体も持ってきている。
 
@@ -7,7 +8,7 @@ const Members = [
   { name: "taro", age: 12 },
   { name: "jiro", age: 13 },
   { name: "saburo", age: 14 },
-  { name: "shiro" },
+  { name: "shiro", age: 17 },
 ];
 
 const Func3 = () => {
@@ -42,8 +43,14 @@ const Func5 = (props) => {
   return <li>名前:{props.name} 年齢:{props.age}</li>
 }
 
-Func5.defaultProps = {
-  age: 100
+// Func5.defaultProps = {
+//   age: 100
+// }
+
+// 「コンポーネント名.propTypes」は、最初のpを小文字にする。
+Func5.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 const App = () => {
