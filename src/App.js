@@ -35,4 +35,3 @@ class App extends Component {
 }
 
 export default App
-詳細11: 00
