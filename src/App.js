@@ -1,30 +1,38 @@
-import React, { Component, useState } from "react";
+//クラスコンポーネントのライフサイクル
+import React, { Component } from 'react'
 
-// const Child = () => {
-//   const val = "";
-//   const [moji, setMoji] = useState('文字です');
-//   return (
-//     <div>
-//       <p>{moji}</p>
-//       <input type="text" />
-//       <button onClick={(e) => e.target.previousElementSibling.value = val}>送信</button>
-//       <button onClick={() => console.log(val)}>確認</button>
-//     </div>
-//   )
-// }
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    }
+  }
 
-const App = () => {
-  // count という名前の state 変数を宣言、初期値 0 をセット
-  const [count, setCount] = useState(0)
-  return (
-    <div> <p>現在の数字は{count}です</p>
-      {/* setCount()は、countを更新するための関数。countを引数で受け取ること も出来る */}
-      <button onClick={() => setCount(prevState => prevState + 1)}> +1</button>
-      <button onClick={() => setCount(count - 1)}>- 1</button> <button onClick={() => setCount(0)}>0</button>
-      <button onClick={() => console.log(typeof setCount)}>useStateボタン</button>
-      {/* <Child /> */}
-    </div>)
+  componentDidMount() {
+    console.log("didmount")
+  }
+
+  componentDidUpdate() {
+    console.log("didupdate")
+  }
+
+  render() {
+    return (
+      <>
+        <p>{`${this.state.count}回クリックされました`}</p>
+        <div>
+          <button onClick={() => this.setState({ count: this.state.count + 1 })} >
+            ボタン
+          </button>
+          <button onClick={() => this.setState({ count: 0 })}>
+            リセット
+          </button>
+        </div>
+      </>
+    )
+  }
 }
 
-
-export default App;
+export default App
+詳細11: 00
