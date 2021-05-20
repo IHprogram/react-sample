@@ -1,37 +1,31 @@
-//クラスコンポーネントのライフサイクル
-import React, { Component } from 'react'
+// 関数コンポーネントのuseEffect
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-    }
+import React, { useState, useEffect } from 'react'
+
+const App = () => {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    console.log("変更されてます")
+  }, [count])
+
+  const kansu = () => {
+    setCount(0)
+    console.log("呼ばれてますよ")
   }
 
-  componentDidMount() {
-    console.log("didmount")
-  }
-
-  componentDidUpdate() {
-    console.log("didupdate")
-  }
-
-  render() {
-    return (
-      <>
-        <p>{`${this.state.count}回クリックされました`}</p>
-        <div>
-          <button onClick={() => this.setState({ count: this.state.count + 1 })} >
-            ボタン
-          </button>
-          <button onClick={() => this.setState({ count: 0 })}>
-            リセット
-          </button>
-        </div>
-      </>
-    )
-  }
+  return (
+    <>
+      <p>{`${count}回クリックされました`}</p>
+      <div >
+        <button onClick={() => setCount((prev) => prev + 1)}>
+          ボタン
+        </button>
+        <button onClick={kansu}>
+          リセット
+        </button>
+      </div>
+    </>
+  )
 }
 
 export default App
